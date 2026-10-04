@@ -1,0 +1,231 @@
+{
+ "Folders": [
+  {
+   "name": "Major topic/Special groupings",
+   "display": "Standard Projections<br /><span style='font-size: smaller'>(Estimates and Projection scenarios)</span>",
+   "MajorGroup": [
+    {
+     "name": "Most used",
+     "Header": "<br />\n<p style='text-align: center'>\nExcel files with annual estimates and standard projection scenarios with our <b>most used data combined in one file</b>.\n<br/>For more annual data by single ages ",
+     "Footer": "<p class=\"Copyright\">\nCopyright © 2024 by United Nations, made available under a",
+     "SubGroup": [
+      {
+       "name": "Demographic Indicators",
+       "Item": [
+        {
+         "File": [
+          {
+           "type": "XLSX",
+           "Path": "assets/Excel Files/1_Indicator (Standard)/EXCEL_FILES/1_General/WPP2024_GEN_F01_DEMOGRAPHIC_INDICATORS_COMPACT.xlsx",
+           "Title": "Compact (most used: estimates and medium projections)"
+          },
+          {
+           "type": "XLSX",
+           "Path": "assets/Excel Files/1_Indicator (Standard)/EXCEL_FILES/1_General/WPP2024_GEN_F01_DEMOGRAPHIC_INDICATORS_FULL.xlsx",
+           "Title": "Complete (estimates and all projection scenarios)"
+          }
+         ],
+         "Description": "Our most used data in one file, annually from 1950 to 2100, including the follow"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "name": "CSV format",
+     "Header": "<br />\n<p style='text-align: center'>\nThe <b>CSV (comma-separated values) files</b> below are meant for bulk processing in statistical softwares (like R and Stata) and databases.\n</p>\n<p>\nPlease note that most files are compressed using the gzip compression algorithm for faster download, save storag",
+     "Footer": "<p class=\"Copyright\">\nCopyright © 2024 by United Nations, made available under a Creative Commons license CC BY 3.0 IGO: <a href=\"http://creativecommons.org/licenses/by/3.0/igo/\" target=\"_blank\">http://creativecommons.org/licenses/by/3.0/igo/</a>\n<br />\nSuggested citation: United Nations, Department of Economic and Social Affairs, Population Division (2024). <i>World Population Prospects 2024, Online Edition</i>.\n</p>",
+     "SubGroup": [
+      {
+       "name": "Notes",
+       "Item": [
+        {
+         "File": [
+          {
+           "type": "CSV",
+           "Path": "assets/Excel Files/1_Indicator (Standard)/CSV_FILES/WPP2024_Locations_notes.csv",
+           "Title": "File"
+          }
+         ],
+         "Description": "Location notes."
+        }
+       ]
+      },
+      {
+       "name": "Demographic Indicators",
+       "Item": [
+        {
+         "File": [
+          {
+           "type": "CSV",
+           "Path": "assets/Excel Files/1_Indicator (Standard)/CSV_FILES/WPP2024_Demographic_Indicators_notes.csv",
+           "Title": "Indicator reference"
+          },
+          {
+           "type": "gz",
+           "Path": "assets/Excel Files/1_Indicator (Standard)/CSV_FILES/WPP2024_Demographic_Indicators_Medium.csv.gz",
+           "Title": "1950-2100, medium"
+          },
+          {
+           "type": "gz",
+           "Path": "assets/Excel Files/1_Indicator (Standard)/CSV_FILES/WPP2024_Demographic_Indicators_OtherVariants.csv.gz",
+           "Title": "2024-2100, other scenarios"
+          }
+         ],
+         "Description": "Demographic Indicators:\n<ul>\n<li>Total Population, as of 1 January (thousands)</li>\n<li>Total Population, as of 1 July ("
+        }
+       ]
+      },
+      {
+       "name": "Population",
+       "Item": [
+        {
+         "File": [
+          {
+           "type": "gz",
+           "Path": "assets/Excel Files/1_Indicator (Standard)/CSV_FILES/WPP2024_TotalPopulationBySex.csv.gz",
+           "Title": "1950-2100, all scenarios"
+          }
+         ],
+         "Description": "Total Population on 01 July."
+        },
+        {
+         "File": [
+          {
+           "type": "gz",
+           "Path": "assets/Excel Files/1_Indicator (Standard)/CSV_FILES/WPP2024_Population1JanuaryByAge5GroupSex_Medium.csv.gz",
+           "Title": "1950-2100, medium"
+          },
+          {
+           "type": "gz",
+           "Path": "assets/Excel Files/1_Indicator (Standard)/CSV_FILES/WPP2024_Population1JanuaryByAge5GroupSex_OtherVariants.csv.gz",
+           "Title": "2024-2100, other scenarios"
+          }
+         ],
+         "Description": "Population on 01 January, by 5-year age groups."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "name": "Interim Update",
+     "Header": "<br /><div style='background-color: #fff3cd; border: 1px solid #ffc107; padding: 15px; margin: 20px 0; border-radius: 5px;'><h3 style='color: #856404; margin-top: 0;'>Release date: 19 January 2026</h3><h4>1. Postponement of the next World Population Prospects release</h4><p>The World Population Prospects 2024 was released on 11 July 2024. The next revision, originally planned for 2026, has been postponed for public release until 11 July 2027.</p><br /><h4>2. Interim update for Togo population estimates and medium projections</h4>[trimmed]</div>",
+     "Footer": "",
+     "SubGroup": [
+      {
+       "name": "Excel Files",
+       "Item": [
+        {
+         "File": [
+          {
+           "type": "ZIP",
+           "Path": "assets/Excel Files/1_Indicator (Standard)/WPP2024_Excel_files_update.zip",
+           "Title": "WPP2024 Excel Files Update"
+          }
+         ],
+         "Description": "<strong>Excel Files (Contained in WPP2024_Excel_files_update.zip):</strong><ul><li>WPP2024_GEN_F01_DEMOGRAPHIC_INDICATORS_COMPACT_Update.xlsx</li><li>WPP2024_POP_F01_POPULATION_SINGLE_AGE_Update.xlsx</li><li>WPP2024_POP_F02_POPULATION_5-YEAR_AGE_GROUPS_Update.xlsx</li></ul>"
+        }
+       ]
+      },
+      {
+       "name": "CSV / ASCII Files",
+       "Item": [
+        {
+         "File": [
+          {
+           "type": "ZIP",
+           "Path": "assets/Excel Files/1_Indicator (Standard)/WPP2024_CSV_files_update.zip",
+           "Title": "WPP2024 CSV Files Update"
+          }
+         ],
+         "Description": "<strong>CSV / ASCII Files (Contained in WPP2024_CSV_files_update.zip):</strong><ul><li>WPP2024_Demographic_Indicators_Medium_Update.csv</li><li>WPP2024_TotalPopulationBySex_Medium_Update.csv</li><li>WPP2024_PopulationBySingleAgeSex_Medium_Update.csv</li><li>WPP2024_PopulationByAge5GroupSex_Medium_Update.csv</li><li>WPP2024_Population1JanuaryBySingleAgeSex_Medium_Update.csv</li><li>WPP2024_Population1JanuaryByAge5GroupSex_Medium_Update.csv</li><li>WPP2024_PopulationExposureBySingleAgeSex_Medium_Update.csv</li><li>WPP2024_PopulationExposureByAge5GroupSex_Medium_Update.csv</li><li>WPP2024_Fertility_by_Age1_Medium_Update.csv</li><li>WPP2024_Fertility_by_Age5_Medium_Update.csv</li><li>WPP2024_DeathsBySingleAgeSex_Medium_Update.csv</li></ul>"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Major topic/Special groupings",
+   "display": "Archive",
+   "MajorGroup": [
+    {
+     "name": "Standard Projections",
+     "Header": "<br />\n<p style='text-align: center'>\nBelow you will find compressed (zip format) files for <b>previous</b> revisions of the <i>World Population Prospects</i>.\n</p>\n<p style='text-align: justify'>\nEac",
+     "Footer": "<p class=\"Copyright\">\nCopyright © 1992-2024 by United Nations, made available un",
+     "SubGroup": [
+      {
+       "name": "2022 Revision",
+       "Item": [
+        {
+         "File": [
+          {
+           "type": "ZIP",
+           "Path": "assets/Excel Files/5_Archive/WPP2022-Excel-files.zip",
+           "Title": "WPP2022-Excel-files.zip"
+          }
+         ],
+         "Description": "Compressed (zip) file with all Excel files (indicators) published with estimates and standard projection variants."
+        }
+       ]
+      },
+      {
+       "name": "2019 Revision",
+       "Item": [
+        {
+         "File": [
+          {
+           "type": "ZIP",
+           "Path": "assets/Excel Files/5_Archive/WPP2019-Excel-files.zip",
+           "Title": "WPP2019-Excel-files.zip"
+          }
+         ],
+         "Description": "Compressed (zip) file with all Excel files (indicators) published with estimates and standard projection variants."
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "name": "CSV files",
+     "Header": "<br />\n<p style='text-align: center'>\nBelow you will find compressed (zip format) files for <b>previous</b> <i>World Population Prospects</i> revisions\n</p>\n<p>\nEach revision-specific compressed file ",
+     "Footer": "<p class=\"Copyright\">\nCopyright © 1998-2024 by United Nations, made available un",
+     "SubGroup": [
+      {
+       "name": "2022 Revision",
+       "Item": [
+        {
+         "File": [
+          {
+           "type": "ZIP",
+           "Path": "assets/Excel Files/5_Archive/WPP2022-CSV-data.zip",
+           "Title": "WPP2022-CSV-data.zip"
+          }
+         ],
+         "Description": "Compressed (zip) file with all CSV files (indicators) published with estimates and standard projection variants."
+        }
+       ]
+      },
+      {
+       "name": "2019 Revision",
+       "Item": [
+        {
+         "File": [
+          {
+           "type": "ZIP",
+           "Path": "assets/Excel Files/5_Archive/WPP2019-CSV-data.zip",
+           "Title": "WPP2019-CSV-data.zip"
+          }
+         ],
+         "Description": "Compressed (zip) file with all CSV files (indicators) published."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
