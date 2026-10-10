@@ -4,3 +4,5 @@ __pycache__/
 *.py[cod]
 .pytest_cache/
 .ruff_cache/
+data/parquet/
+data/work/
