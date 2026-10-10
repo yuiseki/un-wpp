@@ -1,0 +1,11 @@
+The contents of data/ are the United Nations World Population Prospects, © United
+Nations, Department of Economic and Social Affairs, Population Division, made available
+under Creative Commons Attribution 3.0 IGO (https://creativecommons.org/licenses/by/3.0/igo/).
+
+Suggested citation: United Nations, Department of Economic and Social Affairs, Population
+Division (2024). World Population Prospects 2024, Online Edition.
+
+The raw files are the UN's, unchanged. The Parquet files under parquet/ are a reformatting
+of the UN's CSV files (types set, rows kept); they are not endorsed by the United Nations.
+
+The code of the repository this dataset was built from is MIT licensed.

@@ -1,0 +1,33 @@
+# Where this data comes from and what was done to it.
+
+source:
+  name: World Population Prospects, CSV files
+  publisher: United Nations, Department of Economic and Social Affairs, Population Division
+  portal: https://population.un.org/wpp/
+  catalogue: https://population.un.org/wpp/assets/downloads.json  # sha256 5a088f7691f39ad5f1a7e11dccd149b481f88adf77705ffc907a31cada07df1a, Last-Modified Mon, 29 Jun 2026 11:56:46 GMT
+  licence:
+    applied: CC BY 3.0 IGO (https://creativecommons.org/licenses/by/3.0/igo/), as the catalogue states it for each release
+    card: "license: other, license_name: cc-by-3.0-igo"
+    attribution_required: true
+  citation: >-
+    United Nations, Department of Economic and Social Affairs, Population Division (2024). World Population Prospects 2024, Online Edition.
+
+revisions_in_raw:
+  - wpp1998  # Archive / CSV files / 1998 Revision
+  - wpp2000  # Archive / CSV files / 2000 Revision
+  - wpp2002  # Archive / CSV files / 2002 Revision
+  - wpp2004  # Archive / CSV files / 2004 Revision
+  - wpp2006  # Archive / CSV files / 2006 Revision
+  - wpp2008  # Archive / CSV files / 2008 Revision
+  - wpp2010  # Archive / CSV files / 2010 Revision
+  - wpp2012  # Archive / CSV files / 2012 Revision
+  - wpp2015  # Archive / CSV files / 2015 Revision
+  - wpp2017  # Archive / CSV files / 2017 Revision
+  - wpp2019  # Archive / CSV files / 2019 Revision
+  - wpp2022  # Archive / CSV files / 2022 Revision
+  - wpp2024  # Standard Projections / CSV format
+
+processing:
+  - raw files kept as served (zips, gzipped CSVs), each checked against the sha256 in its MANIFEST.json
+  - scripts/03_export_parquet.py writes the current release and its interim update to Parquet
+  - scripts/04_verify_parquet.py compares every row with the source file
