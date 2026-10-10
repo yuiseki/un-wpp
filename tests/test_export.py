@@ -74,3 +74,12 @@ def test_inf_in_a_numeric_column_is_kept_as_infinity(tmp_path):
     assert duckdb.sql(f"select isinf(TFR) from '{out}' where Location = 'Namibia'").fetchone() == (
         True,
     )
+
+
+def test_lx_and_Lx_are_both_kept_under_different_names(tmp_path):
+    src = tmp_path / "lt.csv"
+    src.write_text("LocID,lx,Lx\n4,100000,99000.5\n", encoding="utf-8")
+    out = tmp_path / "lt.parquet"
+    m.export_csv(duckdb.connect(), src, out, label="lt")
+    got = duckdb.sql(f"select lx, Lx_person_years from '{out}'").fetchall()
+    assert got == [(100000.0, 99000.5)]

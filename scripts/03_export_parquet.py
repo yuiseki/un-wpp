@@ -53,6 +53,15 @@ NUMBER_RE = r"-?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?|-?Inf"  # Inf: a sex ratio w
 COPY = "format parquet, compression zstd, row_group_size 100000, write_bloom_filter false"
 
 
+# DuckDB compares column names case-insensitively, and the life tables have both lx (survivors)
+# and Lx (person-years lived): the second is renamed so that a table can hold both.
+RENAMED = {"Lx": "Lx_person_years"}
+
+
+def output_name(name: str) -> str:
+    return RENAMED.get(name, name)
+
+
 def column_type(name: str) -> str:
     if name in INTEGER_COLUMNS:
         return "BIGINT"
@@ -73,11 +82,13 @@ def header_of(src: Path) -> list[str]:
 def export_csv(con, src: Path, out: Path, label: str, text_only: bool = False) -> int:
     cols = header_of(src)
     types = {c: "VARCHAR" if text_only else column_type(c) for c in cols}
+    if len({output_name(c).lower() for c in cols}) != len(cols):
+        raise SystemExit(f"{label}: column names that differ only in case: {cols}")
     select = []
-    for c in cols:
-        q = f'"{c}"'
+    for i, c in enumerate(cols):
+        q, alias = f"c{i}", f'"{output_name(c)}"'
         if types[c] == "VARCHAR":
-            select.append(f"{q} as {q}")
+            select.append(f"{q} as {alias}")
             continue
         pattern, what = (
             (INTEGER_RE, "an integer") if types[c] == "BIGINT" else (NUMBER_RE, "a number")
@@ -85,13 +96,13 @@ def export_csv(con, src: Path, out: Path, label: str, text_only: bool = False) -
         select.append(
             f"case when {q} is null then null when regexp_full_match({q}, '{pattern}') "
             f"then cast({q} as {types[c]}) "
-            f"else error('{label}: {c} is not {what}: ' || {q}) end as {q}"
+            f"else error('{label}: {c} is not {what}: ' || {q}) end as {alias}"
         )  # fmt: skip
-    spec = ", ".join(f"'{c}': 'VARCHAR'" for c in cols)
+    spec = ", ".join(f"'c{i}': 'VARCHAR'" for i in range(len(cols)))
     out.parent.mkdir(parents=True, exist_ok=True)
     tmp = out.with_suffix(".parquet.part")
     con.execute(
-        f"copy (select {', '.join(select)} from read_csv('{src}', header=true, columns={{{spec}}}, "
+        f"copy (select {', '.join(select)} from read_csv('{src}', header=true, skip=0, columns={{{spec}}}, "
         f"encoding='utf-8', quote='\"', escape='\"', nullstr='', all_varchar=true, "
         f"strict_mode=true)) to '{tmp}' ({COPY})"
     )
