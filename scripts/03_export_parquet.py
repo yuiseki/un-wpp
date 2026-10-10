@@ -49,7 +49,7 @@ TEXT_COLUMNS = {
     "Variant", "AgeGrp", "Sex",
 }  # fmt: skip
 INTEGER_RE = "-?[0-9]+"
-NUMBER_RE = r"-?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?"
+NUMBER_RE = r"-?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?|-?Inf"  # Inf: a sex ratio with no males
 COPY = "format parquet, compression zstd, row_group_size 100000, write_bloom_filter false"
 
 
@@ -79,7 +79,9 @@ def export_csv(con, src: Path, out: Path, label: str, text_only: bool = False) -
         if types[c] == "VARCHAR":
             select.append(f"{q} as {q}")
             continue
-        pattern, what = (INTEGER_RE, "an integer") if types[c] == "BIGINT" else (NUMBER_RE, "a number")
+        pattern, what = (
+            (INTEGER_RE, "an integer") if types[c] == "BIGINT" else (NUMBER_RE, "a number")
+        )
         select.append(
             f"case when {q} is null then null when regexp_full_match({q}, '{pattern}') "
             f"then cast({q} as {types[c]}) "
@@ -130,7 +132,9 @@ def main() -> int:
                 for name in sorted(z.namelist()):
                     if name.endswith(".csv"):
                         z.extract(name, scratch)
-                        jobs.append((scratch / name, f"{rel.name}-{d.name}", slug(Path(name).stem), False))
+                        jobs.append(
+                            (scratch / name, f"{rel.name}-{d.name}", slug(Path(name).stem), False)
+                        )
     for src, group, table, text_only in jobs:
         out = OUT / group / f"{table}.parquet"
         label = f"{group}/{src.name}"
@@ -140,7 +144,9 @@ def main() -> int:
             raise SystemExit(f"{label}: {n} rows written, {want} read")
         rows.append((f"{group}/{table}", group, src.name, n, len(header_of(src))))
         print(f"{group}/{table} {n:,}", flush=True)
-    con.execute("create table f (parquet VARCHAR, release VARCHAR, source VARCHAR, rows BIGINT, columns BIGINT)")
+    con.execute(
+        "create table f (parquet VARCHAR, release VARCHAR, source VARCHAR, rows BIGINT, columns BIGINT)"
+    )
     con.executemany("insert into f values (?, ?, ?, ?, ?)", rows)
     con.execute(f"copy f to '{OUT / 'files.parquet'}' ({COPY})")
     return 0

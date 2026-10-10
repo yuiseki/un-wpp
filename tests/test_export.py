@@ -13,7 +13,7 @@ _spec.loader.exec_module(m)
 
 CSV = (
     "﻿SortOrder,LocID,Notes,ISO3_code,ISO2_code,Location,Time,AgeGrp,AgeGrpStart,MidPeriod,TFR\r\n"
-    '1,516,,NAM,NA,Namibia,2024,0-4,0,2024.5,3.1\r\n'
+    "1,516,,NAM,NA,Namibia,2024,0-4,0,2024.5,3.1\r\n"
     '2,4,a,AFG,AF,"Afghanistan, Islamic Rep.",2025,100+,100,2025.5,\r\n'
 )
 
@@ -60,7 +60,17 @@ def test_a_value_that_does_not_fit_its_type_stops_with_the_file_and_value(tmp_pa
 
 def test_notes_files_keep_their_text_columns(tmp_path):
     src = tmp_path / "n.csv"
-    src.write_text("Notes,Text\na,\"Long, quoted\"\n", encoding="utf-8")
+    src.write_text('Notes,Text\na,"Long, quoted"\n', encoding="utf-8")
     out = tmp_path / "n.parquet"
     m.export_csv(duckdb.connect(), src, out, label="n", text_only=True)
     assert duckdb.sql(f"select Notes, Text from '{out}'").fetchall() == [("a", "Long, quoted")]
+
+
+def test_inf_in_a_numeric_column_is_kept_as_infinity(tmp_path):
+    src = tmp_path / "f.csv"
+    src.write_text(CSV.replace("3.1", "Inf"), encoding="utf-8")
+    out = tmp_path / "f.parquet"
+    m.export_csv(duckdb.connect(), src, out, label="f")
+    assert duckdb.sql(f"select isinf(TFR) from '{out}' where Location = 'Namibia'").fetchone() == (
+        True,
+    )
